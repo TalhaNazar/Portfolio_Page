@@ -135,14 +135,14 @@
   .avatar-preview {
     position: fixed; top: 0; left: 0;
     transform: scale(0.9);
-    width: 220px; height: 220px; border-radius: 18px; object-fit: cover; object-position: center;
+    width: 260px; height: 300px; border-radius: 18px; object-fit: cover; object-position: center;
     border: 2px solid var(--accent-dim); background: var(--bg-raised);
     box-shadow: 0 20px 50px rgba(0,0,0,0.55), 0 0 0 4px rgba(61,255,154,0.08), 0 0 30px rgba(61,255,154,0.3);
     opacity: 0; pointer-events: none; z-index: 200;
     transition: opacity 0.22s ease, transform 0.22s ease;
   }
   .avatar-preview.show { opacity: 1; transform: scale(1); }
-  @media (max-width: 640px) { .avatar-preview { width: 160px; height: 160px; } }
+  @media (max-width: 640px) { .avatar-preview { width: 190px; height: 220px; } }
   @media (prefers-reduced-motion: reduce) { .avatar-preview { transition: opacity 0.15s ease; } }
 
   h1.name {
@@ -568,10 +568,12 @@
       <div class="term-body">
         <div class="prompt-line"><span class="p">$</span> <span class="c">whoami</span></div>
         <div class="whoami-row">
+          <!--
           <div class="avatar-wrap">
             <img class="avatar" src="assets/avatar.png" alt="Photo of Talha Nazar">
             <img class="avatar-preview" src="assets/avatar.png" alt="" aria-hidden="true">
           </div>
+          -->
           <h1 class="name">Talha <span class="hl">Nazar</span><span class="cursor"></span></h1>
         </div>
         <div class="profile-lines" id="profileLines">
