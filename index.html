@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>talha@nazar:~$ — AI & NeuroAI Research</title>
-<meta name="description" content="Talha Nazar — deep learning, RLHF and reasoning evaluation, brain-inspired AI. PhD applicant in NeuroAI.">
+<title>talha@nazar:~$ AI & NeuroAI Research</title>
+<meta name="description" content=" Talha Nazar, deep learning, RLHF and reasoning evaluation, brain-inspired AI. PhD applicant in NeuroAI.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,7 +83,7 @@
     font-family: var(--mono); font-weight: 600; font-size: 14px;
     color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px;
   }
-  .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+  .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: pulseNode 2.6s ease-in-out infinite; }
   .nav-links { display: flex; align-items: center; font-size: 13px; font-family: var(--mono); }
   .nav-links a { color: var(--ink-soft); text-decoration: none; margin-right: 26px; }
   .nav-links a:last-child { margin-right: 0; }
@@ -121,32 +121,36 @@
   .prompt-line .p { color: var(--accent); }
   .prompt-line .c { color: var(--ink); }
 
+  .whoami-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .avatar {
+    width: 84px; height: 84px; border-radius: 50%; object-fit: cover; object-position: center 18%;
+    border: 2px solid var(--accent-dim); background: var(--bg-raised); flex: none;
+    box-shadow: 0 0 0 4px rgba(61,255,154,0.08), 0 0 18px rgba(61,255,154,0.22);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .avatar:hover { transform: scale(1.05); box-shadow: 0 0 0 5px rgba(61,255,154,0.14), 0 0 26px rgba(61,255,154,0.4); }
+  @media (max-width: 480px) { .avatar { width: 64px; height: 64px; } }
+
   h1.name {
     font-weight: 800; font-size: clamp(38px, 6.5vw, 64px); line-height: 1.08;
     margin: 18px 0 14px; color: var(--ink);
   }
   h1.name .hl { color: var(--accent); }
-  .tagline {
-    font-family: var(--sans); font-size: clamp(16px, 2vw, 18px); color: var(--ink-soft);
-    margin: 0 0 30px; max-width: 56ch; line-height: 1.6;
+  .profile-lines {
+    font-family: var(--sans); font-size: clamp(15px, 1.8vw, 16.5px); color: var(--ink-soft);
+    margin: 0 0 30px; max-width: 60ch; line-height: 1.8;
   }
-  .tagline .kw { color: var(--accent2); font-family: var(--mono); }
-
-  .hero-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
-  .pill-link {
-    font-family: var(--mono); font-size: 13px; color: var(--ink); text-decoration: none;
-    background: var(--bg-raised); border: 1px solid var(--line); padding: 9px 15px; border-radius: 8px;
-    display: inline-flex; align-items: center; gap: 7px;
-  }
-  .pill-link:hover { border-color: var(--accent-dim); color: var(--accent); }
-  .pill-link .arrow { color: var(--ink-faint); }
+  .profile-line { margin-bottom: 4px; min-height: 1.8em; }
+  .profile-line .kw { color: var(--accent2); font-family: var(--mono); }
+  .profile-line .pv { color: var(--ink-soft); }
+  .profile-line .type-cursor { display: inline-block; width: 0.5em; height: 1em; background: var(--accent2); margin-left: 2px; vertical-align: -0.15em; animation: blink 1s step-end infinite; }
 
   /* ============================= STAT STRIP ============================= */
   .stat-strip { padding: 40px 0 70px; }
   .stat-term .term-body { padding: 22px 28px; }
   .stat-row { display: flex; flex-wrap: wrap; gap: 0; font-family: var(--mono); font-size: 13.5px; }
-  .stat-cell { width: 25%; min-width: 150px; padding: 14px 18px 14px 0; }
-  @media (max-width: 760px) { .stat-cell { width: 50%; } }
+  .stat-cell { flex: 1 1 190px; min-width: 150px; padding: 14px 18px 14px 0; }
+  @media (max-width: 620px) { .stat-cell { flex: 1 1 45%; } }
   .stat-key { color: var(--ink-faint); }
   .stat-key::before { content: '"'; }
   .stat-key::after { content: '":'; }
@@ -284,6 +288,7 @@
 
   /* ============================= NEURO-NETWORK DECORATION ============================= */
   .neuro-bg { position: absolute; inset: 0; z-index: 0; opacity: 0.6; pointer-events: none; }
+  .neuro-bg svg { transition: transform 0.4s ease-out; }
   .neuro-bg .node { fill: var(--accent); filter: drop-shadow(0 0 4px rgba(61,255,154,0.7)); animation: pulseNode 3.6s ease-in-out infinite; }
   .neuro-bg .node.b { fill: var(--accent2); filter: drop-shadow(0 0 4px rgba(107,168,255,0.7)); }
   .neuro-bg .synapse { stroke: var(--line); stroke-width: 1; fill: none; }
@@ -357,6 +362,135 @@
   .rec-email a { color: var(--ink-soft); text-decoration: none; }
   .rec-email a:hover { color: var(--accent); }
   .rec-email a::before { content: '✉ '; color: var(--accent-dim); }
+
+  /* ============================= VISITOR PANEL ============================= */
+  .visitor-panel { margin-top: 22px; padding-top: 22px; border-top: 1px dashed var(--line); }
+  .visitor-greet {
+    font-family: var(--mono); font-size: 13.5px; color: var(--accent2); margin-bottom: 16px; min-height: 20px; line-height: 1.6;
+  }
+  .visitor-greet .type-cursor { display: inline-block; width: 0.5em; height: 1em; background: var(--accent2); margin-left: 2px; vertical-align: -0.15em; animation: blink 1s step-end infinite; }
+  .role-label { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 10px; }
+  .role-pills { display: flex; flex-wrap: wrap; gap: 9px; }
+  .role-pill {
+    font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); background: var(--bg-raised);
+    border: 1px solid var(--line); padding: 8px 14px; border-radius: 980px; cursor: pointer;
+  }
+  .role-pill:hover { border-color: var(--accent-dim); color: var(--ink); }
+  .role-pill.active { border-color: var(--accent); color: var(--accent); background: rgba(61,255,154,0.08); }
+  .role-jump { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; min-height: 0; }
+  .role-jump.has-items { margin-top: 16px; }
+  .jump-label { font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); width: 100%; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .jump-chip {
+    font-family: var(--mono); font-size: 12px; color: var(--accent); text-decoration: none;
+    background: rgba(61,255,154,0.07); border: 1px solid rgba(61,255,154,0.25); padding: 6px 12px; border-radius: 7px;
+  }
+  .jump-chip:hover { background: rgba(61,255,154,0.14); }
+
+  /* highlighted section when relevant to chosen role */
+  section.role-highlight {
+    position: relative;
+  }
+  section.role-highlight::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent);
+  }
+  .role-badge {
+    display: none; font-family: var(--mono); font-size: 11px; color: var(--accent); background: rgba(61,255,154,0.08);
+    border: 1px solid rgba(61,255,154,0.3); padding: 4px 10px; border-radius: 6px; margin-bottom: 16px;
+  }
+  section.role-highlight .role-badge { display: inline-block; }
+
+  /* ============================= ACCORDION (EXPERIENCE) ============================= */
+  .exp-item ul.exp-lead { margin: 0; padding-left: 18px; }
+  .exp-details { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .exp-item.expanded .exp-details { max-height: 600px; }
+  .exp-details ul { margin: 8px 0 0; padding-left: 18px; }
+  .exp-toggle {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; background: none; border: none;
+    color: var(--accent2); font-family: var(--mono); font-size: 12.5px; cursor: pointer; padding: 0;
+  }
+  .exp-toggle:hover { color: var(--accent); }
+  .exp-toggle .chev { display: inline-block; transition: transform 0.25s ease; }
+  .exp-item.expanded .exp-toggle .chev { transform: rotate(180deg); }
+  .exp-item:not(.has-more) .exp-toggle { display: none; }
+
+  /* ============================= SKILL TABS ============================= */
+  .skill-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+  .skill-tab {
+    font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); background: var(--bg-raised);
+    border: 1px solid var(--line); padding: 9px 15px; border-radius: 8px; cursor: pointer;
+  }
+  .skill-tab:hover { color: var(--ink); }
+  .skill-tab.active { color: var(--accent); border-color: var(--accent-dim); background: rgba(61,255,154,0.07); }
+  .skill-panel { display: none; }
+  .skill-panel.active { display: block; }
+
+  /* ============================= REVEAL ON SCROLL ============================= */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* ============================= CORNER NEURON MOTIFS ============================= */
+  .neuro-host { position: relative; overflow: hidden; }
+  .neuro-host > .wrap-narrow, .neuro-host > .wrap { position: relative; z-index: 1; }
+  .neuro-corner { position: absolute; top: -18px; right: -18px; width: 160px; height: 160px; opacity: 0.4; pointer-events: none; z-index: 0; }
+  .neuro-corner .node { fill: var(--accent); filter: drop-shadow(0 0 3px rgba(61,255,154,0.6)); animation: pulseNode 3.2s ease-in-out infinite; }
+  .neuro-corner .node.b { fill: var(--accent2); filter: drop-shadow(0 0 3px rgba(107,168,255,0.6)); }
+  .neuro-corner .synapse { stroke: var(--line); stroke-width: 1; fill: none; }
+  .neuro-corner .synapse.active { stroke: var(--accent-dim); stroke-width: 1; stroke-dasharray: 3 6; animation: dashMove 2.4s linear infinite; opacity: 0.6; }
+  @media (prefers-reduced-motion: reduce) { .neuro-corner .node, .neuro-corner .synapse.active { animation: none; } }
+
+  /* ============================= MODERN HOVER EFFECTS ============================= */
+  .card, .exp-item, .pub, .now-card, .rec-item, .metric, .contact-item {
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card:hover, .exp-item:hover, .pub:hover, .now-card:hover, .rec-item:hover, .metric:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-dim);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.35), 0 0 0 1px rgba(61,255,154,0.12);
+  }
+  .contact-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-dim);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.3), 0 0 0 1px rgba(61,255,154,0.12);
+  }
+
+  .tag { transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
+  .tag:hover { transform: translateY(-2px); border-color: var(--accent2); background: rgba(107,168,255,0.14); }
+
+  .figure { transition: border-color 0.25s ease, box-shadow 0.25s ease; overflow: hidden; }
+  .figure:hover { border-color: var(--accent-dim); box-shadow: 0 14px 34px rgba(0,0,0,0.35); }
+  .figure img { transition: transform 0.4s ease; }
+  .figure:hover img { transform: scale(1.03); }
+
+  .cert-list li a { transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+  .cert-list li a:hover { transform: translateX(4px); }
+
+  .jump-chip, .skill-tab, .role-pill { transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease; }
+  .jump-chip:hover, .skill-tab:hover, .role-pill:hover { transform: translateY(-2px); }
+
+  .exp-toggle { transition: color 0.2s ease, transform 0.2s ease; }
+  .exp-toggle:hover { transform: translateX(2px); }
+
+  .btn, .note-btn { transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
+  .btn:hover, .note-btn:hover { transform: translateY(-2px); }
+
+  .nav-links a { position: relative; transition: color 0.2s ease; }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px;
+    background: var(--accent); transition: width 0.25s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .brand { transition: opacity 0.2s ease; }
+  .brand:hover { opacity: 0.8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .exp-item, .pub, .now-card, .rec-item, .metric, .contact-item,
+    .tag, .figure, .figure img, .cert-list li a, .jump-chip, .skill-tab,
+    .role-pill, .exp-toggle, .btn, .note-btn, .nav-links a::after, .avatar {
+      transition: none !important;
+    }
+  }
 </style>
 </head>
 <body>
@@ -415,21 +549,30 @@
     <div class="term">
       <div class="term-bar">
         <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-        <span class="term-bar-title">whoami.sh — running</span>
+        <span class="term-bar-title">whoami.sh running</span>
       </div>
       <div class="term-body">
         <div class="prompt-line"><span class="p">$</span> <span class="c">whoami</span></div>
-        <h1 class="name">Talha <span class="hl">Nazar</span><span class="cursor"></span></h1>
-        <p class="tagline">
-          <span class="kw">role:</span> AI &amp; NeuroAI researcher · <span class="kw">focus:</span> reasoning evaluation, RLHF, brain-inspired ML ·
-          <span class="kw">status:</span> applying for PhD, working toward explainable, brain-inspired AI where trustworthy reasoning has real downstream consequences.
-        </p>
-        <div class="hero-links">
-          <a class="pill-link" href="mailto:talhanazarch33@gmail.com">talhanazarch33@gmail.com <span class="arrow">↗</span></a>
-          <a class="pill-link" href="https://scholar.google.com/citations?user=6RYP9KYAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar <span class="arrow">↗</span></a>
-          <a class="pill-link" href="https://www.linkedin.com/in/talha-nazar/" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
-          <a class="pill-link" href="https://orcid.org/0009-0003-0011-9423" target="_blank" rel="noopener">ORCID <span class="arrow">↗</span></a>
-          <a class="pill-link" href="https://medium.com/@Talha_Nazar" target="_blank" rel="noopener">Medium <span class="arrow">↗</span></a>
+        <div class="whoami-row">
+          <img class="avatar" src="assets/avatar.png" alt="Photo of Talha Nazar">
+          <h1 class="name">Talha <span class="hl">Nazar</span><span class="cursor"></span></h1>
+        </div>
+        <div class="profile-lines" id="profileLines">
+          <div class="profile-line"><span class="kw">role:</span> <span class="pv" id="pvRole"></span></div>
+          <div class="profile-line"><span class="kw">focus:</span> <span class="pv" id="pvFocus"></span></div>
+          <div class="profile-line"><span class="kw">status:</span> <span class="pv" id="pvStatus"></span></div>
+        </div>
+
+        <div class="visitor-panel">
+          <div class="visitor-greet" id="visitorGreet"></div>
+          <span class="role-label">I am visiting as</span>
+          <div class="role-pills" id="rolePills">
+            <button class="role-pill" type="button" data-role="supervisor">PhD Supervisor</button>
+            <button class="role-pill" type="button" data-role="recruiter">Recruiter</button>
+            <button class="role-pill" type="button" data-role="researcher">Fellow Researcher</button>
+            <button class="role-pill" type="button" data-role="general">Just looking</button>
+          </div>
+          <div class="role-jump" id="roleJump"></div>
         </div>
       </div>
     </div>
@@ -439,17 +582,16 @@
 <!-- ============================= STAT STRIP ============================= -->
 <div class="stat-strip">
   <div class="wrap-narrow">
-    <div class="term stat-term">
+    <div class="term stat-term reveal" id="statTerm">
       <div class="term-bar">
         <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
         <span class="term-bar-title">stats.json</span>
       </div>
       <div class="term-body">
         <div class="stat-row">
-          <div class="stat-cell"><span class="stat-key">papers</span><span class="stat-val">2</span></div>
-          <div class="stat-cell"><span class="stat-key">years_in_ai</span><span class="stat-val">4+</span></div>
-          <div class="stat-cell"><span class="stat-key">ielts_academic</span><span class="stat-val">6.5</span></div>
-          <div class="stat-cell"><span class="stat-key">focus_year</span><span class="stat-val">2026</span></div>
+          <div class="stat-cell"><span class="stat-key">papers</span><span class="stat-val" id="statPapers" data-count="2">0</span></div>
+          <div class="stat-cell"><span class="stat-key">years_in_ai</span><span class="stat-val" id="statYears" data-count="4" data-suffix="+">0</span></div>
+          <div class="stat-cell"><span class="stat-key">focus_year</span><span class="stat-val" id="statFocus" data-count="2026">0</span></div>
         </div>
       </div>
     </div>
@@ -457,24 +599,36 @@
 </div>
 
 <!-- ============================= SUMMARY / RESEARCH INTERESTS ============================= -->
-<section class="slab" id="research">
+<section class="slab neuro-host" id="research">
+  <svg class="neuro-corner" viewBox="0 0 200 200" aria-hidden="true">
+    <line class="synapse active" x1="20" y1="30" x2="90" y2="60" style="animation-delay:.1s"/>
+    <line class="synapse" x1="90" y1="60" x2="60" y2="120"/>
+    <line class="synapse active" x1="90" y1="60" x2="160" y2="40" style="animation-delay:.7s"/>
+    <line class="synapse" x1="160" y1="40" x2="150" y2="110"/>
+    <line class="synapse active" x1="60" y1="120" x2="150" y2="110" style="animation-delay:1.3s"/>
+    <circle class="node" cx="20" cy="30" r="3"/>
+    <circle class="node b" cx="90" cy="60" r="3.5" style="animation-delay:.3s"/>
+    <circle class="node" cx="160" cy="40" r="3" style="animation-delay:.9s"/>
+    <circle class="node b" cx="60" cy="120" r="3" style="animation-delay:.5s"/>
+    <circle class="node" cx="150" cy="110" r="3.5" style="animation-delay:1.1s"/>
+  </svg>
   <div class="wrap-narrow">
     <div class="cmd-header"><span class="p">$</span> <span class="c">cat about.md</span></div>
     <h2 class="sec-title"><span class="hash">#</span>Where neuroscience meets machine learning</h2>
-    <p class="card-detail" style="font-size:15.5px; max-width:66ch; margin-bottom:28px;">
-      AI graduate with a background in software engineering, working at the intersection of AI
-      and neuroscience. Experienced in deep learning, reinforcement learning with human feedback
-      (RLHF), chain-of-thought and model evaluation, and behavioral analysis of large language
-      models. Seeking doctoral training to build sustained research depth in explainable,
-      brain-inspired AI.
+    <p class="card-detail reveal" style="font-size:15.5px; max-width:66ch; margin-bottom:28px;">
+      I came to AI through software engineering, and stayed for the question of how intelligence
+      actually works. My work spans deep learning, RLHF, chain of thought evaluation, and
+      behavioral analysis of large language models, always circling back to what a model's
+      internal representations reveal about its behavior. I am seeking doctoral training to turn
+      that question into a sustained research program in explainable, brain inspired AI.
     </p>
     <div class="tags">
-      <span class="tag">explainable-ml</span>
-      <span class="tag">brain-inspired-ai</span>
-      <span class="tag">visual-perception</span>
-      <span class="tag">predictive-coding</span>
-      <span class="tag">reasoning-alignment</span>
-      <span class="tag">representation-learning</span>
+      <span class="tag">explainable ml</span>
+      <span class="tag">brain inspired ai</span>
+      <span class="tag">visual perception</span>
+      <span class="tag">predictive coding</span>
+      <span class="tag">reasoning alignment</span>
+      <span class="tag">representation learning</span>
     </div>
   </div>
 </section>
@@ -486,30 +640,31 @@
     <h2 class="sec-title"><span class="hash">#</span>Foundations</h2>
     <div class="card-grid">
       <div class="card">
-        <div class="card-eyebrow">2020 – 2023</div>
+        <div class="card-eyebrow">2020 to 2023</div>
         <div class="card-title">MSc, Artificial Intelligence</div>
         <div class="card-sub">FAST-NUCES, Islamabad, Pakistan</div>
         <p class="card-detail">Thesis: Localizing and Analyzing the Infographics in Documents Using Deep Learning</p>
       </div>
       <div class="card">
-        <div class="card-eyebrow">2016 – 2020</div>
+        <div class="card-eyebrow">2016 to 2020</div>
         <div class="card-title">BS, Software Engineering</div>
         <div class="card-sub">COMSATS University, Islamabad, Pakistan</div>
-        <p class="card-detail">Final year project: IoT-based home automation system for remote control of lights, fans, and door locks via a mobile app connected to an embedded circuit</p>
+        <p class="card-detail">Final year project: IoT based home automation system for remote control of lights, fans, and door locks via a mobile app connected to an embedded circuit</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================= THESIS ============================= -->
-<section class="slab" id="thesis">
+<section class="slab" id="thesis" data-relevance="supervisor,researcher">
   <div class="wrap-narrow">
+    <span class="role-badge" data-badge>Relevant to your visit</span>
     <div class="cmd-header"><span class="p">$</span> <span class="c">cat thesis/summary.md</span></div>
-    <h2 class="sec-title"><span class="hash">#</span>Master's thesis — infographic understanding</h2>
+    <h2 class="sec-title"><span class="hash">#</span>Master's thesis: infographic understanding</h2>
 
     <p class="body-copy">
-      Resumes increasingly use infographics — bar meters, circular progress rings, icon
-      scales — to communicate skill levels instead of prose. My MSc thesis built a pipeline
+      Resumes increasingly use infographics, bar meters, circular progress rings, icon
+      scales, to communicate skill levels instead of prose. My MSc thesis built a pipeline
       to automatically <strong>find</strong> those infographics inside a document,
       <strong>tie</strong> each one to its associated skill label, and <strong>convert</strong>
       its visual fill level into a number, treating the resume as a visual scene rather than
@@ -526,7 +681,7 @@
 
     <div class="figure">
       <img src="assets/thesis-pipeline.png" alt="Infographic localization and quantification pipeline: dataset, YOLO detection, padding, contour extraction, OCR, and infographic quantification via intensity histogram">
-      <div class="figure-cap"><span class="n">Fig. 1</span> — detection, skill association, and quantification pipeline (YOLO + OCR + contour analysis).</div>
+      <div class="figure-cap"><span class="n">Fig. 1:</span> detection, skill association, and quantification pipeline (YOLO + OCR + contour analysis).</div>
     </div>
 
     <div class="sub-h">Results</div>
@@ -544,82 +699,108 @@
     </div>
 
     <p class="body-copy">
-      The thesis conclusion proposed this as a baseline for a more brain-inspired successor:
-      incorporating models of human visual attention — saliency mapping, eye-tracking-style
-      priors — so infographic interpretation looks less like template matching and more like
+      The thesis conclusion proposed this as a baseline for a more brain inspired successor,
+      incorporating models of human visual attention such as saliency mapping and eye tracking
+      style priors, so infographic interpretation looks less like template matching and more like
       how a person actually scans a document. That's the thread that pulled me toward NeuroAI.
     </p>
     <p class="body-copy" style="font-size:13.5px; color:var(--ink-faint);">
-      Published at IMCOM 2023 · under review at IJDAR — full citations under
+      Published at IMCOM 2023 · under review at IJDAR, full citations under
       <a href="#publications">Publications</a>.
     </p>
   </div>
 </section>
 
 <!-- ============================= EXPERIENCE ============================= -->
-<section class="slab" id="experience">
+<section class="slab" id="experience" data-relevance="recruiter">
   <div class="wrap-narrow">
+    <span class="role-badge" data-badge>Relevant to your visit</span>
     <div class="cmd-header"><span class="p">$</span> <span class="c">git log --oneline --reverse experience</span></div>
     <h2 class="sec-title"><span class="hash">#</span>Where the work happened</h2>
     <div class="exp-list">
 
-      <div class="exp-item">
-        <div class="exp-top"><span class="exp-role">Chain-of-Thought &amp; Model Evaluation</span><span class="exp-date">Sep 2025 – Present</span></div>
+      <div class="exp-item has-more">
+        <div class="exp-top"><span class="exp-role">Chain of Thought &amp; Model Evaluation</span><span class="exp-date">Sep 2025 to Present</span></div>
         <div class="exp-org">Micro1 · Remote</div>
-        <ul>
-          <li>Designed structured chain-of-thought (CoT) frameworks to elicit and analyze step-wise reasoning in LLMs</li>
-          <li>Developed CoT and response evaluation rubrics assessing logical consistency, causal validity, and intermediate reasoning steps</li>
-          <li>Performed systematic scoring and comparative evaluation to identify reasoning patterns, failure modes, and alignment gaps</li>
+        <ul class="exp-lead">
+          <li>Designed structured chain of thought (CoT) frameworks to elicit and analyze stepwise reasoning in LLMs</li>
         </ul>
+        <div class="exp-details">
+          <ul>
+            <li>Developed CoT and response evaluation rubrics assessing logical consistency, causal validity, and intermediate reasoning steps</li>
+            <li>Performed systematic scoring and comparative evaluation to identify reasoning patterns, failure modes, and alignment gaps</li>
+          </ul>
+        </div>
+        <button class="exp-toggle" type="button">Show more details <span class="chev">▾</span></button>
       </div>
 
-      <div class="exp-item">
-        <div class="exp-top"><span class="exp-role">Expert AI Data Trainer (STEM)</span><span class="exp-date">Jan 2025 – Apr 2025</span></div>
+      <div class="exp-item has-more">
+        <div class="exp-top"><span class="exp-role">Expert AI Data Trainer (STEM)</span><span class="exp-date">Jan 2025 to Apr 2025</span></div>
         <div class="exp-org">Invisible Technologies · Remote</div>
-        <ul>
-          <li>Designed and evaluated structured learning signals for LLMs, focused on step-wise reasoning and error decomposition in STEM domains</li>
-          <li>Conducted large-scale behavioral response analysis to assess model generalization, consistency, and failure modes</li>
-          <li>Maintained quality benchmarks above 90% under controlled evaluation protocols</li>
+        <ul class="exp-lead">
+          <li>Designed and evaluated structured learning signals for LLMs, focused on stepwise reasoning and error decomposition in STEM domains</li>
         </ul>
+        <div class="exp-details">
+          <ul>
+            <li>Conducted large scale behavioral response analysis to assess model generalization, consistency, and failure modes</li>
+            <li>Maintained quality benchmarks above 90% under controlled evaluation protocols</li>
+          </ul>
+        </div>
+        <button class="exp-toggle" type="button">Show more details <span class="chev">▾</span></button>
       </div>
 
       <div class="exp-item">
-        <div class="exp-top"><span class="exp-role">AI Content Writer</span><span class="exp-date">Oct 2024 – Present</span></div>
+        <div class="exp-top"><span class="exp-role">AI Content Writer</span><span class="exp-date">Oct 2024 to Present</span></div>
         <div class="exp-org">Medium</div>
         <ul>
           <li>Publish articles on data analysis, machine learning, computing, reinforcement learning, and neuroscience &amp; AI</li>
         </ul>
       </div>
 
-      <div class="exp-item">
-        <div class="exp-top"><span class="exp-role">Data Analyst</span><span class="exp-date">Oct 2024 – Dec 2024</span></div>
+      <div class="exp-item has-more">
+        <div class="exp-top"><span class="exp-role">Data Analyst</span><span class="exp-date">Oct 2024 to Dec 2024</span></div>
         <div class="exp-org">Excelerate · Remote</div>
-        <ul>
-          <li>Conducted exploratory data analysis on large-scale student interaction and engagement data to identify behavioral patterns and drop-off points</li>
-          <li>Used predictive models to estimate student engagement and retention under different content and platform conditions</li>
-          <li>Contributed to an approximate 20% increase in platform usage through data-driven interventions</li>
+        <ul class="exp-lead">
+          <li>Conducted exploratory data analysis on large scale student interaction and engagement data to identify behavioral patterns and drop off points</li>
         </ul>
+        <div class="exp-details">
+          <ul>
+            <li>Used predictive models to estimate student engagement and retention under different content and platform conditions</li>
+            <li>Contributed to an approximate 20% increase in platform usage through data driven interventions</li>
+          </ul>
+        </div>
+        <button class="exp-toggle" type="button">Show more details <span class="chev">▾</span></button>
       </div>
 
-      <div class="exp-item">
-        <div class="exp-top"><span class="exp-role">Advanced AI Data Trainer</span><span class="exp-date">Jul 2022 – Aug 2024</span></div>
+      <div class="exp-item has-more">
+        <div class="exp-top"><span class="exp-role">Advanced AI Data Trainer</span><span class="exp-date">Jul 2022 to Aug 2024</span></div>
         <div class="exp-org">Invisible Technologies · Remote</div>
-        <ul>
-          <li>Worked on preference modeling and response ranking for instruction-following language models</li>
-          <li>Contributed to data annotation pipelines aligned with RLHF</li>
-          <li>Led cross-cultural annotation teams, ensuring consistency and inter-rater reliability</li>
+        <ul class="exp-lead">
+          <li>Worked on preference modeling and response ranking for instruction following language models</li>
         </ul>
+        <div class="exp-details">
+          <ul>
+            <li>Contributed to data annotation pipelines aligned with RLHF</li>
+            <li>Led cross cultural annotation teams, ensuring consistency and inter rater reliability</li>
+          </ul>
+        </div>
+        <button class="exp-toggle" type="button">Show more details <span class="chev">▾</span></button>
       </div>
 
-      <div class="exp-item">
-        <div class="exp-top"><span class="exp-role">University Research Assistant — KDD Lab</span><span class="exp-date">Oct 2021 – Sep 2022</span></div>
+      <div class="exp-item has-more">
+        <div class="exp-top"><span class="exp-role">University Research Assistant, KDD Lab</span><span class="exp-date">Oct 2021 to Sep 2022</span></div>
         <div class="exp-org">FAST-NUCES · Islamabad</div>
-        <ul>
+        <ul class="exp-lead">
           <li>Conducted research on visual perception and structural understanding using deep learning models</li>
-          <li>Used deep learning models for detecting and localizing infographics, treating documents as complex visual scenes</li>
-          <li>Applied CNN-based architectures for feature extraction, spatial reasoning, and pattern recognition</li>
-          <li>Research resulted in two peer-reviewed publications in document analysis</li>
         </ul>
+        <div class="exp-details">
+          <ul>
+            <li>Used deep learning models for detecting and localizing infographics, treating documents as complex visual scenes</li>
+            <li>Applied CNN based architectures for feature extraction, spatial reasoning, and pattern recognition</li>
+            <li>Research resulted in two peer reviewed publications in document analysis</li>
+          </ul>
+        </div>
+        <button class="exp-toggle" type="button">Show more details <span class="chev">▾</span></button>
       </div>
 
     </div>
@@ -627,10 +808,23 @@
 </section>
 
 <!-- ============================= PUBLICATIONS ============================= -->
-<section class="slab alt" id="publications">
+<section class="slab alt neuro-host" id="publications" data-relevance="supervisor,researcher">
+  <svg class="neuro-corner" viewBox="0 0 200 200" aria-hidden="true">
+    <line class="synapse active" x1="30" y1="20" x2="100" y2="55" style="animation-delay:.2s"/>
+    <line class="synapse" x1="100" y1="55" x2="70" y2="115"/>
+    <line class="synapse active" x1="100" y1="55" x2="165" y2="35" style="animation-delay:.8s"/>
+    <line class="synapse" x1="165" y1="35" x2="155" y2="100"/>
+    <line class="synapse active" x1="70" y1="115" x2="155" y2="100" style="animation-delay:1.4s"/>
+    <circle class="node" cx="30" cy="20" r="3"/>
+    <circle class="node b" cx="100" cy="55" r="3.5" style="animation-delay:.4s"/>
+    <circle class="node" cx="165" cy="35" r="3" style="animation-delay:1s"/>
+    <circle class="node b" cx="70" cy="115" r="3" style="animation-delay:.6s"/>
+    <circle class="node" cx="155" cy="100" r="3.5" style="animation-delay:1.2s"/>
+  </svg>
   <div class="wrap-narrow">
+    <span class="role-badge" data-badge>Relevant to your visit</span>
     <div class="cmd-header"><span class="p">$</span> <span class="c">cat publications.bib</span></div>
-    <h2 class="sec-title"><span class="hash">#</span>Peer-reviewed work</h2>
+    <h2 class="sec-title"><span class="hash">#</span>Peer reviewed work</h2>
     <div class="pub-grid">
       <div class="pub">
         <div class="pub-venue">IMCOM 2023 · 17th Intl. Conf. on Ubiquitous Information Management &amp; Communication</div>
@@ -647,20 +841,21 @@
 </section>
 
 <!-- ============================= NEUROAI / DRIFT DYNAMICS ============================= -->
-<section class="slab" id="neuroai">
+<section class="slab" id="neuroai" data-relevance="supervisor,researcher">
   <div class="wrap-narrow">
+    <span class="role-badge" data-badge>Relevant to your visit</span>
     <div class="cmd-header"><span class="p">$</span> <span class="c">python train.py --experiment representational_drift</span></div>
     <h2 class="sec-title"><span class="hash">#</span>Representational drift: Hebbian vs. backprop</h2>
 
-    <svg class="spike-divider" viewBox="0 0 1000 26" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="spike-divider reveal" viewBox="0 0 1000 26" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0,13 L60,13 L75,3 L90,23 L105,13 L160,13 L175,5 L190,21 L205,13 L260,13 L275,2 L290,24 L305,13 L360,13 L375,4 L390,22 L405,13 L460,13 L475,3 L490,23 L505,13 L560,13 L575,5 L590,21 L605,13 L660,13 L675,2 L690,24 L705,13 L760,13 L775,4 L790,22 L805,13 L860,13 L875,3 L890,23 L905,13 L960,13 L975,5 L990,21 L1000,13"/>
     </svg>
 
     <div class="now-grid" style="margin-bottom:8px;">
       <div class="now-card">
         <span class="tag-status"><span class="d"></span>neuromatch academy · neuroai 2026</span>
-        <p>Group project comparing how hidden-layer representations evolve under
-        <strong>backprop</strong> versus a <strong>hybrid Hebbian–gradient</strong> learning
+        <p>Group project comparing how hidden layer representations evolve under
+        <strong>backprop</strong> versus a <strong>hybrid Hebbian and gradient</strong> learning
         rule, on binary MNIST classification (digits 0 vs. 1), across three architectures:
         MLP, CNN and KAN.</p>
       </div>
@@ -675,14 +870,14 @@
 
     <div class="sub-h">Setup</div>
     <p class="body-copy">
-      Both models are trained on the same binary task until performance stabilizes —
-      confirmed stable across a three-epoch window — then tracked for five more epochs
+      Both models are trained on the same binary task until performance stabilizes,
+      confirmed stable across a three epoch window, then tracked for five more epochs
       of continued training. No new task, no injected noise.
     </p>
 
     <div class="figure">
-      <img src="assets/mlp-learning-curves.png" alt="Core MLP learning curves showing validation accuracy across three seeds for backprop and hybrid Hebbian-gradient learning rules">
-      <div class="figure-cap"><span class="n">Fig. 2</span> — core MLP validation accuracy, 3 seeds. Both rules converge before the post-stability tracking window begins.</div>
+      <img src="assets/mlp-learning-curves.png" alt="Core MLP learning curves showing validation accuracy across three seeds for backprop and hybrid Hebbian and gradient learning rules">
+      <div class="figure-cap"><span class="n">Fig. 2:</span> core MLP validation accuracy, 3 seeds. Both rules converge before the post stability tracking window begins.</div>
     </div>
 
     <div class="sub-h">What "drift" means here</div>
@@ -690,91 +885,107 @@
       <span class="n-label">Definitional note</span>
       <p>
         Once accuracy stabilizes, training continues on the same task, and we track how
-        hidden-layer geometry moves. We call this <strong>post-stability representational
+        hidden layer geometry moves. We call this <strong>post stability representational
         change</strong> and treat it operationally as drift: the representations shift while
         accuracy and class information stay constant. This is <strong>not</strong> spontaneous
-        biological drift — it's a measured consequence of continued training under a fixed task.
+        biological drift. It is a measured consequence of continued training under a fixed task.
       </p>
     </div>
 
     <p class="body-copy">
-      Drift is quantified four ways — <strong>RSA</strong>, <strong>CKA</strong>,
-      <strong>centroid movement</strong>, and <strong>class-axis geometry</strong> — plus a
-      decoder trained on held-out images at the stable epoch and re-tested on separate images
+      Drift is quantified four ways, <strong>RSA</strong>, <strong>CKA</strong>,
+      <strong>centroid movement</strong>, and <strong>class axis geometry</strong>, plus a
+      decoder trained on held out images at the stable epoch and retested on separate images
       from later epochs, to confirm class information survives the drift.
     </p>
 
     <div class="figure">
-      <img src="assets/post-stability-drift.png" alt="Six-panel figure showing RSA drift, CKA similarity, centroid shift, class-axis angle, cross-epoch decoder accuracy, and validation accuracy for backprop versus hybrid learning across epochs after stability">
-      <div class="figure-cap"><span class="n">Fig. 3</span> — RSA drift, CKA similarity, centroid shift, class-axis angle, cross-epoch decoding, and validation accuracy · backprop vs. hybrid · averaged across 3 seeds.</div>
+      <img src="assets/post-stability-drift.png" alt="Six panel figure showing RSA drift, CKA similarity, centroid shift, class axis angle, cross epoch decoder accuracy, and validation accuracy for backprop versus hybrid learning across epochs after stability">
+      <div class="figure-cap"><span class="n">Fig. 3:</span> RSA drift, CKA similarity, centroid shift, class axis angle, cross epoch decoding, and validation accuracy · backprop vs. hybrid · averaged across 3 seeds.</div>
     </div>
 
     <div class="sub-h">Result</div>
     <p class="body-copy">
       Both learning rules preserve task information throughout. But <strong>backprop shows a
-      small, consistently greater amount of post-stability drift than the hybrid rule</strong>,
+      small, consistently greater amount of post stability drift than the hybrid rule</strong>,
       across all three metrics and all three seeds.
     </p>
 
     <div class="sub-h">Exploratory: CNN &amp; KAN</div>
     <p class="body-copy">
       CNN and KAN runs used the same two learning rules but weren't repeated across seeds or
-      controlled as tightly as the MLP — so they're exploratory checks, not part of the main
-      conclusion. Across all three architectures, backprop/Hebbian RSA similarity degrades
+      controlled as tightly as the MLP, so they're exploratory checks, not part of the main
+      conclusion. Across all three architectures, backprop and Hebbian RSA similarity degrades
       over training, most sharply in the MLP and more gradually in the CNN and KAN.
     </p>
 
     <div class="figure-grid">
       <div class="figure">
         <img src="assets/rsa-similarity-mlp-cnn-kan.png" alt="RSA similarity between backprop and Hebbian representations over training epochs, compared across MLP, CNN, and KAN architectures">
-        <div class="figure-cap"><span class="n">Fig. 4</span> — backprop/Hebbian RSA similarity over training, MLP vs. CNN vs. KAN (exploratory).</div>
+        <div class="figure-cap"><span class="n">Fig. 4:</span> backprop and Hebbian RSA similarity over training, MLP vs. CNN vs. KAN (exploratory).</div>
       </div>
       <div class="figure">
         <img src="assets/cnn-rdm-heatmaps.png" alt="CNN representational dissimilarity matrices comparing backprop and Hebbian learning at the conv2 layer, with a difference heatmap">
-        <div class="figure-cap"><span class="n">Fig. 5</span> — CNN representational dissimilarity matrices, backprop vs. Hebbian, conv2 layer (exploratory).</div>
+        <div class="figure-cap"><span class="n">Fig. 5:</span> CNN representational dissimilarity matrices, backprop vs. Hebbian, conv2 layer (exploratory).</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================= SKILLS ============================= -->
-<section class="slab alt" id="skills">
+<section class="slab alt neuro-host" id="skills" data-relevance="recruiter">
+  <svg class="neuro-corner" viewBox="0 0 200 200" aria-hidden="true">
+    <line class="synapse active" x1="25" y1="25" x2="95" y2="58" style="animation-delay:.15s"/>
+    <line class="synapse" x1="95" y1="58" x2="65" y2="118"/>
+    <line class="synapse active" x1="95" y1="58" x2="162" y2="38" style="animation-delay:.75s"/>
+    <line class="synapse" x1="162" y1="38" x2="152" y2="105"/>
+    <line class="synapse active" x1="65" y1="118" x2="152" y2="105" style="animation-delay:1.35s"/>
+    <circle class="node" cx="25" cy="25" r="3"/>
+    <circle class="node b" cx="95" cy="58" r="3.5" style="animation-delay:.35s"/>
+    <circle class="node" cx="162" cy="38" r="3" style="animation-delay:.95s"/>
+    <circle class="node b" cx="65" cy="118" r="3" style="animation-delay:.55s"/>
+    <circle class="node" cx="152" cy="105" r="3.5" style="animation-delay:1.15s"/>
+  </svg>
   <div class="wrap-narrow">
+    <span class="role-badge" data-badge>Relevant to your visit</span>
     <div class="cmd-header"><span class="p">$</span> <span class="c">pip list --toolkit</span></div>
     <h2 class="sec-title"><span class="hash">#</span>Toolkit</h2>
 
-    <div class="skill-block">
-      <div class="skill-label">Research &amp; Scientific</div>
+    <div class="skill-tabs" id="skillTabs">
+      <button class="skill-tab active" type="button" data-tab="0">Research and Scientific</button>
+      <button class="skill-tab" type="button" data-tab="1">Data and Machine Learning</button>
+      <button class="skill-tab" type="button" data-tab="2">Reasoning and Alignment</button>
+      <button class="skill-tab" type="button" data-tab="3">Brain Inspired Systems</button>
+    </div>
+
+    <div class="skill-panel active" data-panel="0">
       <div class="tags">
-        <span class="tag">scientific-publications</span><span class="tag">research-design</span>
-        <span class="tag">hypothesis-driven-experimentation</span><span class="tag">statistical-analysis</span>
-        <span class="tag">exploratory-data-analysis</span><span class="tag">error-analysis</span>
+        <span class="tag">scientific publications</span><span class="tag">research design</span>
+        <span class="tag">hypothesis driven experimentation</span><span class="tag">statistical analysis</span>
+        <span class="tag">exploratory data analysis</span><span class="tag">error analysis</span>
       </div>
     </div>
 
-    <div class="skill-block">
-      <div class="skill-label">Data &amp; Machine Learning</div>
+    <div class="skill-panel" data-panel="1">
       <div class="tags">
         <span class="tag">python</span><span class="tag">pytorch</span><span class="tag">numpy</span>
-        <span class="tag">scipy</span><span class="tag">pandas</span><span class="tag">predictive-modeling</span>
-        <span class="tag">regression-analysis</span>
+        <span class="tag">scipy</span><span class="tag">pandas</span><span class="tag">predictive modeling</span>
+        <span class="tag">regression analysis</span>
       </div>
     </div>
 
-    <div class="skill-block">
-      <div class="skill-label">Reasoning, Interpretability &amp; Alignment</div>
+    <div class="skill-panel" data-panel="2">
       <div class="tags">
-        <span class="tag">chain-of-thought-eval</span><span class="tag">rubric-based-eval</span>
-        <span class="tag">rlhf-workflows</span><span class="tag">response-ranking</span>
-        <span class="tag">alignment-eval</span><span class="tag">reward-shaping</span>
+        <span class="tag">chain of thought eval</span><span class="tag">rubric based eval</span>
+        <span class="tag">rlhf workflows</span><span class="tag">response ranking</span>
+        <span class="tag">alignment eval</span><span class="tag">reward shaping</span>
       </div>
     </div>
 
-    <div class="skill-block">
-      <div class="skill-label">Explainable ML for Brain-Inspired Systems</div>
+    <div class="skill-panel" data-panel="3">
       <div class="tags">
-        <span class="tag">representation-drift-analysis</span><span class="tag">vector-symbolic-architectures</span>
-        <span class="tag">predictive-coding</span><span class="tag">biologically-plausible-learning</span>
+        <span class="tag">representation drift analysis</span><span class="tag">vector symbolic architectures</span>
+        <span class="tag">predictive coding</span><span class="tag">biologically plausible learning</span>
       </div>
     </div>
   </div>
@@ -789,20 +1000,21 @@
       <ul class="cert-list">
         <li><a href="http://coursera.org/account/accomplishments/professional-cert/KG4LZIEY4YID" target="_blank" rel="noopener">Google Advanced Data Analytics</a></li>
         <li><a href="https://www.coursera.org/account/accomplishments/verify/E1MDUFSCH2RA" target="_blank" rel="noopener">Fundamental Neuroscience for Neuroimaging</a></li>
-        <li><a href="https://portal.neuromatchacademy.org/certificate/e9f01404-1fb2-4852-88d8-f92b82a54eab" target="_blank" rel="noopener">Neuromatch Academy — NeuroAI</a></li>
+        <li><a href="https://portal.neuromatchacademy.org/certificate/e9f01404-1fb2-4852-88d8-f92b82a54eab" target="_blank" rel="noopener">Neuromatch Academy, NeuroAI</a></li>
       </ul>
       <div class="card">
         <div class="card-eyebrow">languages &amp; test scores</div>
-        <p class="card-detail" style="margin-bottom:8px;">Urdu — native · English — proficient (C1/C2)</p>
-        <p class="card-detail">IELTS Academic — Band 6.5 (May 2025)</p>
+        <p class="card-detail" style="margin-bottom:8px;">Urdu: native · English: proficient (C1/C2)</p>
+        <p class="card-detail">IELTS Academic: Band 6.5 (May 2025)</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================= RECOMMENDATIONS ============================= -->
-<section class="slab alt" id="recommendations">
+<section class="slab alt" id="recommendations" data-relevance="supervisor">
   <div class="wrap-narrow">
+    <span class="role-badge" data-badge>Relevant to your visit</span>
     <div class="cmd-header"><span class="p">$</span> <span class="c">cat recommenders.yaml</span></div>
     <h2 class="sec-title"><span class="hash">#</span>Recommendations</h2>
     <div class="rec-list">
@@ -824,7 +1036,7 @@
         <div class="rec-body">
           <div class="rec-top">
             <span class="rec-name">Dr. Kifayat Khan</span>
-            <span class="rec-role">Thesis Co-Supervisor</span>
+            <span class="rec-role">Thesis Co Supervisor</span>
           </div>
           <div class="rec-org">Associate Professor, Department of Computer Science, FAST-NUCES, Islamabad</div>
           <div class="rec-email"><a href="mailto:Kifayat.alizai@nu.edu.pk">Kifayat.alizai@nu.edu.pk</a></div>
@@ -877,6 +1089,291 @@
     <span>Last updated August 2026</span>
   </div>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ===== configuration =====
+     Replace the endpoint value below with your own Formspree visit log
+     form id once you have created it. See README for step by step setup.
+     Visit log form example: https://formspree.io/f/mnopqrst
+     Leave that form's email notifications turned off in Formspree
+     settings, since it is meant for manual checking, not inbox alerts. */
+  var FORMSPREE_VISIT_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_VISIT_FORM_ID';
+
+  /* adaptive greeting */
+  function computeGreeting() {
+    var hour = new Date().getHours();
+    var timeText;
+    if (hour >= 5 && hour < 12) timeText = 'Good morning.';
+    else if (hour >= 12 && hour < 17) timeText = 'Good afternoon.';
+    else if (hour >= 17 && hour < 21) timeText = 'Good evening.';
+    else timeText = 'Still up? Good to see you.';
+
+    var visits = parseInt(localStorage.getItem('tn_visits') || '0', 10) + 1;
+    localStorage.setItem('tn_visits', String(visits));
+
+    var visitText;
+    if (visits <= 1) visitText = ' This looks like your first visit here.';
+    else visitText = ' Welcome back. This is visit number ' + visits + ' from this browser.';
+
+    return timeText + visitText;
+  }
+
+  function typeInto(el, text, speed) {
+    el.textContent = '';
+    var cursor = document.createElement('span');
+    cursor.className = 'type-cursor';
+    var i = 0;
+    function tick() {
+      el.textContent = text.slice(0, i);
+      el.appendChild(cursor);
+      i++;
+      if (i <= text.length) setTimeout(tick, speed);
+      else cursor.remove();
+    }
+    tick();
+  }
+
+  var greetEl = document.getElementById('visitorGreet');
+  if (greetEl) typeInto(greetEl, computeGreeting(), 22);
+
+  /* typed profile lines, role, focus, status */
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var profileValues = [
+    { el: document.getElementById('pvRole'), text: 'NeuroAI researcher, drawn to how neural computation gives rise to intelligence' },
+    { el: document.getElementById('pvFocus'), text: 'representational drift, learning rules inspired by synaptic plasticity, and reasoning evaluation in language models' },
+    { el: document.getElementById('pvStatus'), text: 'applying for a PhD to study these questions where neuroscience and machine learning meet' }
+  ];
+
+  function typeSequential(items, index, speed) {
+    if (index >= items.length) return;
+    var item = items[index];
+    if (!item.el) { typeSequential(items, index + 1, speed); return; }
+    if (prefersReducedMotion) {
+      item.el.textContent = item.text;
+      typeSequential(items, index + 1, speed);
+      return;
+    }
+    var cursor = document.createElement('span');
+    cursor.className = 'type-cursor';
+    var i = 0;
+    function tick() {
+      item.el.textContent = item.text.slice(0, i);
+      item.el.appendChild(cursor);
+      i++;
+      if (i <= item.text.length) {
+        setTimeout(tick, speed);
+      } else {
+        cursor.remove();
+        setTimeout(function () { typeSequential(items, index + 1, speed); }, 260);
+      }
+    }
+    tick();
+  }
+  typeSequential(profileValues, 0, 14);
+
+  /* silent visit log, sent once per page load, not shown anywhere on the page */
+  function logVisit() {
+    if (!FORMSPREE_VISIT_ENDPOINT || FORMSPREE_VISIT_ENDPOINT.indexOf('REPLACE_WITH') !== -1) return;
+    var payload = {
+      visited_at: new Date().toString(),
+      visit_count_this_browser: localStorage.getItem('tn_visits') || '1',
+      role_selected: localStorage.getItem('tn_role') || 'not selected',
+      referrer: document.referrer || 'direct or unknown',
+      language: navigator.language || 'unknown',
+      screen_size: window.screen ? (window.screen.width + ' by ' + window.screen.height) : 'unknown',
+      user_agent: navigator.userAgent,
+      page: window.location.href
+    };
+    fetch(FORMSPREE_VISIT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function () { /* silent, a blocked request should never affect the visitor */ });
+  }
+  logVisit();
+
+
+  /* role based personalization */
+  var roleMessages = {
+    supervisor: 'Good to have a PhD supervisor stop by. The thesis, the NeuroAI project and the recommendations below are probably the most useful starting points.',
+    recruiter: 'Thanks for taking a look. The experience and skills sections below give the fastest picture of what I can do.',
+    researcher: 'Fellow researcher, welcome. The NeuroAI project and publications below go into the most technical depth.',
+    general: 'Feel free to look around. Every section below tells a different part of the story.'
+  };
+
+  function applyRole(role, persist) {
+    document.querySelectorAll('.role-pill').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-role') === role);
+    });
+
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section[data-relevance]'));
+    sections.forEach(function (sec) {
+      var rel = sec.getAttribute('data-relevance').split(',');
+      sec.classList.toggle('role-highlight', role !== 'general' && rel.indexOf(role) !== -1);
+    });
+
+    var jumpEl = document.getElementById('roleJump');
+    jumpEl.innerHTML = '';
+    var relevant = sections.filter(function (sec) {
+      return sec.getAttribute('data-relevance').split(',').indexOf(role) !== -1;
+    });
+    if (relevant.length && role !== 'general') {
+      var label = document.createElement('div');
+      label.className = 'jump-label';
+      label.textContent = 'Recommended for you';
+      jumpEl.appendChild(label);
+      relevant.forEach(function (sec) {
+        var titleEl = sec.querySelector('.sec-title');
+        var text = titleEl ? titleEl.textContent.replace('#', '').trim() : sec.id;
+        var a = document.createElement('a');
+        a.className = 'jump-chip';
+        a.href = '#' + sec.id;
+        a.textContent = text;
+        jumpEl.appendChild(a);
+      });
+      jumpEl.classList.add('has-items');
+    } else {
+      jumpEl.classList.remove('has-items');
+    }
+
+    var msgEl = document.getElementById('roleMsgLine');
+    if (!msgEl) {
+      msgEl = document.createElement('div');
+      msgEl.id = 'roleMsgLine';
+      msgEl.style.marginTop = '10px';
+      greetEl.parentNode.insertBefore(msgEl, greetEl.nextSibling);
+    }
+    msgEl.textContent = roleMessages[role] || '';
+
+    if (persist) localStorage.setItem('tn_role', role);
+  }
+
+  document.querySelectorAll('.role-pill').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyRole(btn.getAttribute('data-role'), true);
+    });
+  });
+
+  var savedRole = localStorage.getItem('tn_role');
+  if (savedRole) applyRole(savedRole, false);
+
+  /* animated stat counters, values computed live rather than hard coded */
+  var AI_JOURNEY_START_YEAR = 2022;
+  function computeDynamicStats() {
+    var currentYear = new Date().getFullYear();
+
+    var papersEl = document.getElementById('statPapers');
+    if (papersEl) {
+      var pubCount = document.querySelectorAll('#publications .pub').length;
+      if (pubCount > 0) papersEl.setAttribute('data-count', String(pubCount));
+    }
+
+    var yearsEl = document.getElementById('statYears');
+    if (yearsEl) {
+      var years = Math.max(1, currentYear - AI_JOURNEY_START_YEAR);
+      yearsEl.setAttribute('data-count', String(years));
+    }
+
+    var focusEl = document.getElementById('statFocus');
+    if (focusEl) {
+      focusEl.setAttribute('data-count', String(currentYear));
+    }
+  }
+  computeDynamicStats();
+
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute('data-count'));
+    var decimals = parseInt(el.getAttribute('data-decimal') || '0', 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1200;
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      el.textContent = (target * progress).toFixed(decimals) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target.toFixed(decimals) + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
+  var statTerm = document.getElementById('statTerm');
+  if (statTerm && 'IntersectionObserver' in window) {
+    var statObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.stat-val').forEach(animateCount);
+          entry.target.classList.add('in-view');
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    statObserver.observe(statTerm);
+  } else if (statTerm) {
+    statTerm.querySelectorAll('.stat-val').forEach(animateCount);
+  }
+
+  /* reveal on scroll */
+  document.querySelectorAll('.figure, .metric-row, .note-box, .now-card').forEach(function (el) {
+    el.classList.add('reveal');
+  });
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in-view'); });
+  }
+
+  /* experience accordion */
+  document.querySelectorAll('.exp-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.exp-item');
+      var expanded = item.classList.toggle('expanded');
+      btn.firstChild.textContent = expanded ? 'Show less details ' : 'Show more details ';
+    });
+  });
+
+  /* skill tabs */
+  document.querySelectorAll('.skill-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var idx = tab.getAttribute('data-tab');
+      document.querySelectorAll('.skill-tab').forEach(function (t) { t.classList.remove('active'); });
+      document.querySelectorAll('.skill-panel').forEach(function (p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.querySelector('.skill-panel[data-panel="' + idx + '"]').classList.add('active');
+    });
+  });
+
+  /* cursor spotlight glow, plus a light parallax drift on the neuron network */
+  var hero = document.querySelector('header.hero');
+  var neuroBg = document.querySelector('.neuro-bg svg');
+  if (hero) {
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      if (neuroBg && !prefersReducedMotion) {
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        neuroBg.style.transform = 'translate(' + (px * 14) + 'px, ' + (py * 10) + 'px)';
+      }
+    });
+    hero.addEventListener('mouseleave', function () {
+      if (neuroBg) neuroBg.style.transform = 'translate(0, 0)';
+    });
+  }
+
+});
+</script>
 
 </body>
 </html>
