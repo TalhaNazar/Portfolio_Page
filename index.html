@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>talha@nazar:~$ AI & NeuroAI Research</title>
-<meta name="description" content=" Talha Nazar, deep learning, RLHF and reasoning evaluation, brain-inspired AI. PhD applicant in NeuroAI.">
+<meta name="description" content="Talha Nazar, deep learning, RLHF and reasoning evaluation, brain inspired AI. PhD applicant in NeuroAI.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,6 +130,20 @@
   }
   .avatar:hover { transform: scale(1.05); box-shadow: 0 0 0 5px rgba(61,255,154,0.14), 0 0 26px rgba(61,255,154,0.4); }
   @media (max-width: 480px) { .avatar { width: 64px; height: 64px; } }
+
+  .avatar-wrap { position: relative; display: inline-flex; flex: none; }
+  .avatar-preview {
+    position: fixed; top: 0; left: 0;
+    transform: scale(0.9);
+    width: 220px; height: 220px; border-radius: 18px; object-fit: cover; object-position: center;
+    border: 2px solid var(--accent-dim); background: var(--bg-raised);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.55), 0 0 0 4px rgba(61,255,154,0.08), 0 0 30px rgba(61,255,154,0.3);
+    opacity: 0; pointer-events: none; z-index: 200;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  .avatar-preview.show { opacity: 1; transform: scale(1); }
+  @media (max-width: 640px) { .avatar-preview { width: 160px; height: 160px; } }
+  @media (prefers-reduced-motion: reduce) { .avatar-preview { transition: opacity 0.15s ease; } }
 
   h1.name {
     font-weight: 800; font-size: clamp(38px, 6.5vw, 64px); line-height: 1.08;
@@ -554,7 +568,10 @@
       <div class="term-body">
         <div class="prompt-line"><span class="p">$</span> <span class="c">whoami</span></div>
         <div class="whoami-row">
-          <img class="avatar" src="assets/avatar.png" alt="Photo of Talha Nazar">
+          <div class="avatar-wrap">
+            <img class="avatar" src="assets/avatar.png" alt="Photo of Talha Nazar">
+            <img class="avatar-preview" src="assets/avatar.png" alt="" aria-hidden="true">
+          </div>
           <h1 class="name">Talha <span class="hl">Nazar</span><span class="cursor"></span></h1>
         </div>
         <div class="profile-lines" id="profileLines">
@@ -1352,6 +1369,42 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelector('.skill-panel[data-panel="' + idx + '"]').classList.add('active');
     });
   });
+
+  /* avatar hover preview, positioned via JS so it escapes the clipped hero and card */
+  var avatarWrap = document.querySelector('.avatar-wrap');
+  var avatarPreview = document.querySelector('.avatar-preview');
+  if (avatarWrap && avatarPreview) {
+    function positionAvatarPreview() {
+      var rect = avatarWrap.getBoundingClientRect();
+      var previewSize = avatarPreview.offsetWidth || 220;
+      var gap = 16;
+      var top, left;
+      if (window.innerWidth <= 640) {
+        top = rect.bottom + gap;
+        left = rect.left + rect.width / 2 - previewSize / 2;
+      } else {
+        top = rect.top + rect.height / 2 - previewSize / 2;
+        left = rect.right + gap;
+        if (left + previewSize > window.innerWidth - 12) {
+          left = rect.left - gap - previewSize;
+        }
+      }
+      top = Math.max(12, Math.min(top, window.innerHeight - previewSize - 12));
+      left = Math.max(12, Math.min(left, window.innerWidth - previewSize - 12));
+      avatarPreview.style.top = top + 'px';
+      avatarPreview.style.left = left + 'px';
+    }
+    avatarWrap.addEventListener('mouseenter', function () {
+      positionAvatarPreview();
+      avatarPreview.classList.add('show');
+    });
+    avatarWrap.addEventListener('mouseleave', function () {
+      avatarPreview.classList.remove('show');
+    });
+    window.addEventListener('resize', function () {
+      if (avatarPreview.classList.contains('show')) positionAvatarPreview();
+    });
+  }
 
   /* cursor spotlight glow, plus a light parallax drift on the neuron network */
   var hero = document.querySelector('header.hero');
